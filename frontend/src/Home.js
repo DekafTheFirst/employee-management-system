@@ -46,7 +46,7 @@ function Home() {
                 <div className="info">
                     <h5 className='name'>{user.username}</h5>
                     <p className='email'>{user.email}</p>
-                    <p>Salary: <strong>{user.type == "manager" ? "$200,000":"$150,000"}</strong>/year</p>
+                    <p>Salary: <strong>{user.type == "manager" ? "$200,000" : "$150,000"}</strong>/year</p>
                 </div>
                 <button className="btn btn-light" onClick={logout}><img src={require('./exit.png')} alt="" /> <span>Logout</span></button>
                 
