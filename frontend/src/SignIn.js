@@ -28,7 +28,6 @@ export default function SignIn() {
             else {
                 navigate('/signin')
             }
-            console.log(res);
         })
         .catch(err => {
             console.log(err);
@@ -46,7 +45,6 @@ export default function SignIn() {
       else{
         alert("No record")
       }
-      console.log(res);
     })
     .catch(err=>console.log(err))
   }

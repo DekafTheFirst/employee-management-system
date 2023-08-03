@@ -9,7 +9,8 @@ function SignUp() {
   const [values, setValues ] = useState({
     name: '',
     email: '',
-    password: ''
+    password: '',
+    type: ''
   })
 
   const [errors, setErrors] = useState({
@@ -56,7 +57,6 @@ function SignUp() {
               <label htmlFor='confirm-password'><strong>Confirm Password</strong></label>
               <input onChange={handleInput} type='password' placeholder='Confirm Password' className='form-control rounded-0' name="confirm-password"/>
               {<span className='text-danger'>{errors.name}</span>}
-
             </div>
             <button type="submit" className='btn btn-success'><strong>Sign Up</strong></button>
             <p>You agree to our terms and conditions?</p>

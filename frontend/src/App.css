@@ -1,0 +1,66 @@
+body {
+    background-color: #f1f1f1;
+}
+
+section {
+   padding-top: 30px; 
+
+}
+
+
+.container {
+    background-color: #FFF;
+    border-radius: 15px;
+    padding: 0;
+}
+
+
+.container .image-background {
+    height: 125px;
+    border-radius: 15px 15px 0px 0px;
+    background-position: center;
+    background-image: url(./gradient.jpg);
+    background-size: cover;
+}
+
+.row {
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.row-with-image {
+    position: relative;
+    height: 200px;
+}
+
+.profile-image {
+    width: 120px;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    left: 30px;
+    border: 2px solid #f1f1f1;
+    padding: 0;
+}
+
+.info {
+    position: absolute;
+    left: 150px;
+}
+
+.info *{
+    margin-bottom: 0;
+}
+
+.row-with-image button{
+    width: 100px;
+    position: absolute;
+    right: 25px;
+    border: 1px solid #f1f1f1;
+}
+
+.row-with-image button img {
+    width: 10px;
+}
+
+

@@ -1,4 +1,4 @@
-import express from 'express'
+import express, { response } from 'express'
 import mysql from 'mysql'
 import cors from 'cors'
 import session from 'express-session'
@@ -23,7 +23,12 @@ app.use(session({
         maxAge: 1000 * 60 * 60 * 24
     } 
 }))
+
 app.use(bodyParser.json())
+
+
+
+
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -32,26 +37,45 @@ const db = mysql.createConnection({
     database: "signup"
 })
 
-app.get("/api", (req, res)=>{
-    return res.json({message: "this is africa bitch"})
+
+
+
+
+
+app.get('/logout', (req, res)=>{
+    req.session.destroy()
+    return res.json({valid: false});
+    
 })
 
+
 app.get('/', (req, res)=>{
-    if(req.session.username) {
-        return res.json({valid: true, username: req.session.username});
+    console.log(req.session)
+    if(req.session.user) {
+        const type="";
+        if(req.session.user.type == "manager") {
+            type == "manager";
+
+        }
+        else {
+            type == "employee";
+
+        }
+        return res.json({valid: true, user: req.session.user, type:type});
     }
     else {
         return res.json({valid: false});
     }
 })
 
+
+
 app.post('/signup',(req, res)=>{
-    const sql = "INSERT INTO users (`username`, `email`, `password`) VALUES (?)";
+    const sql = "INSERT INTO users (`username`, `email`, `password`, `type`) VALUES (?)";
     const values = [
         req.body.name,
         req.body.email,
-        req.body.password
-        
+        req.body.password,        
     ]
     console.log(values)
     db.query(sql, [values], (err, result)=>{
@@ -66,13 +90,14 @@ app.post("/signin", (req, res)=>{
     db.query(sql, [req.body.email, req.body.password], (err, result)=>{
         if(err) return res.json({Message: "Error inside server"})
         if(result.length > 0 ) {
-            req.session.username = result[0].username;
+            req.session.user = result[0];
             return res.json({Login: true})
         }
         else {
             return res.json({Login: false})
         }
     })
+    
 })
 
 app.listen(8081, ()=>{
